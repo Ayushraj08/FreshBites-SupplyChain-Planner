@@ -7,6 +7,8 @@ export default function ProcurementDashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  const BASE_URL = "https://freshbites-supplychain-planner-backend.onrender.com/api";
+
   useEffect(() => {
     fetchProcurement();
   }, []);
@@ -15,7 +17,7 @@ export default function ProcurementDashboard() {
     setLoading(true);
     setError("");
     try {
-      const res = await fetch("/api/procurement_plan");
+      const res = await fetch(`${BASE_URL}/procurement_plan`);
       const data = await res.json();
 
       if (data.error) {
@@ -34,25 +36,25 @@ export default function ProcurementDashboard() {
   };
 
   const handleProcurementUpload = async (e) => {
-  const file = e.target.files[0];
-  if (!file) return;
-  const formData = new FormData();
-  formData.append("file", file);
-  try {
-    await fetch("/api/upload_procurement", {
-      method: "POST",
-      body: formData,
-    });
-    fetchProcurement();
-  } catch (err) {
-    setError("❌ Procurement upload error");
-    console.error(err);
-  }
-};
+    const file = e.target.files[0];
+    if (!file) return;
+    const formData = new FormData();
+    formData.append("file", file);
+    try {
+      await fetch(`${BASE_URL}/upload_procurement`, {
+        method: "POST",
+        body: formData,
+      });
+      fetchProcurement();
+    } catch (err) {
+      setError("❌ Procurement upload error");
+      console.error(err);
+    }
+  };
 
   const handleReset = async () => {
     try {
-      await fetch("/api/reset_procurement", {
+      await fetch(`${BASE_URL}/reset_procurement`, {
         method: "POST",
       });
       setProcurement([]);
@@ -106,8 +108,13 @@ export default function ProcurementDashboard() {
           <div className="flex gap-3">
             <label className="cursor-pointer flex items-center gap-2 px-4 py-2 bg-blue-500/20 border border-blue-500 text-blue-300 rounded-lg hover:bg-blue-500/30 transition">
               <Upload className="w-4 h-4" />
-                  Upload Procurement CSV
-              <input type="file" accept=".csv" className="hidden" onChange={handleProcurementUpload} />
+              Upload Procurement CSV
+              <input
+                type="file"
+                accept=".csv"
+                className="hidden"
+                onChange={handleProcurementUpload}
+              />
             </label>
 
             <button
