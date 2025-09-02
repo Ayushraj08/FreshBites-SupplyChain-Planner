@@ -20,14 +20,14 @@ export default function AIModule() {
       const formData = new FormData();
       formData.append("file", forecastFile);
 
-      const res = await fetch("http://localhost:8000/api/forecast_adjust", {
+      const res = await fetch("https://freshbites-supplychain-planner-backend.onrender.com/api/forecast_adjust", {
         method: "POST",
         body: formData,
       });
       setForecast(await res.json());
     } else {
       const series = [120, 135, 150, 170, 200, 220];
-      const res = await fetch("http://localhost:8000/api/forecast_adjust", {
+      const res = await fetch("https://freshbites-supplychain-planner-backend.onrender.com/api/forecast_adjust", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ series, periods: 4 }),
@@ -42,7 +42,7 @@ export default function AIModule() {
       const formData = new FormData();
       formData.append("file", optimizationFile);
 
-      const res = await fetch("http://localhost:8000/api/optimize_allocation", {
+      const res = await fetch("https://freshbites-supplychain-planner-backend.onrender.com/api/optimize_allocation", {
         method: "POST",
         body: formData,
       });
@@ -54,7 +54,7 @@ export default function AIModule() {
 
   // What-If Analyzer (sliders)
   const runWhatIf = async (demand, capacity) => {
-    const res = await fetch("http://localhost:8000/api/whatif", {
+    const res = await fetch("https://freshbites-supplychain-planner-backend.onrender.com/api/whatif", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ demand_change: demand, capacity_change: capacity }),
@@ -68,7 +68,7 @@ export default function AIModule() {
     const formData = new FormData();
     formData.append("file", whatifFile);
 
-    const res = await fetch("http://localhost:8000/api/whatif", {
+    const res = await fetch("https://freshbites-supplychain-planner-backend.onrender.com/api/whatif", {
       method: "POST",
       body: formData,
     });

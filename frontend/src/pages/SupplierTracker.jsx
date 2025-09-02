@@ -13,7 +13,7 @@ export default function SupplierDashboard() {
   const fetchSuppliers = async () => {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:8000/api/suppliers");
+      const res = await fetch("https://freshbites-supplychain-planner-backend.onrender.com/api/suppliers");
       const data = await res.json();
       if (Array.isArray(data)) {
         setSuppliers(data);
@@ -37,7 +37,7 @@ const handleFileUpload = async (e) => {
   formData.append("file", file);
 
   try {
-    const res = await fetch("http://localhost:8000/api/upload_suppliers", {
+    const res = await fetch("https://freshbites-supplychain-planner-backend.onrender.com/api/upload_suppliers", {
       method: "POST",
       body: formData,
     });

@@ -25,7 +25,7 @@ export default function DemandDashboard() {
 
   // ✅ Fetch demand (with sorting)
   useEffect(() => {
-    fetch("http://localhost:8000/api/demand")
+    fetch("https://freshbites-supplychain-planner-backend.onrender.com/api/demand")
       .then((res) => res.json())
       .then((resData) => {
         const sorted = [...resData].sort((a, b) => a.Week - b.Week); // ensure weeks in order
@@ -45,7 +45,7 @@ export default function DemandDashboard() {
   // ✅ Call backend simulation (with sorting)
   const simulateEvent = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/simulate_demand", {
+      const response = await fetch("https://freshbites-supplychain-planner-backend.onrender.com/api/simulate_demand", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

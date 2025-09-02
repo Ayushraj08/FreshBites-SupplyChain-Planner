@@ -35,7 +35,7 @@ export default function Dashboard() {
     pendingFiles.forEach((file) => formData.append("files", file));
 
     try {
-      const response = await fetch("http://localhost:8000/api/upload", {
+      const response = await fetch("https://freshbites-supplychain-planner-backend.onrender.com/api/upload", {
         method: "POST",
         body: formData,
       });
@@ -66,7 +66,7 @@ export default function Dashboard() {
 const resetAll = async () => {
   if (window.confirm("⚠️ This will reset ALL dashboards, data, and charts. Continue?")) {
     try {
-      const res = await fetch("http://localhost:8000/api/reset", {
+      const res = await fetch("https://freshbites-supplychain-planner-backend.onrender.com/api/reset", {
         method: "POST",
       });
       if (!res.ok) throw new Error("Reset failed");

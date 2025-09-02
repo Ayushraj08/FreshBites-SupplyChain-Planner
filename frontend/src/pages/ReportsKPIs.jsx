@@ -26,7 +26,7 @@ export default function ReportsKPIs() {
   // 🔹 Fetch Notes from backend
   const fetchNotes = async () => {
     try {
-      const res = await fetch("http://localhost:8000/api/notes");
+      const res = await fetch("https://freshbites-supplychain-planner-backend.onrender.com/api/notes");
       const data = await res.json();
       setNotes(data);
     } catch (err) {
@@ -38,7 +38,7 @@ export default function ReportsKPIs() {
   const addNote = async () => {
     if (!newNote.trim()) return;
     try {
-      const res = await fetch("http://localhost:8000/api/notes", {
+      const res = await fetch("https://freshbites-supplychain-planner-backend.onrender.com/api/notes", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ text: newNote }),
@@ -55,7 +55,7 @@ export default function ReportsKPIs() {
   // 🔹 Approve Note
   const approveNote = async (id) => {
     try {
-      const res = await fetch(`http://localhost:8000/api/notes/${id}/approve`, {
+      const res = await fetch(`https://freshbites-supplychain-planner-backend.onrender.com/api/notes/${id}/approve`, {
         method: "POST", // ✅ matches backend
       });
       if (res.ok) {
@@ -69,7 +69,7 @@ export default function ReportsKPIs() {
   // 🔹 Fetch KPIs from backend
   const fetchKPIs = async () => {
     try {
-      const res = await fetch("http://localhost:8000/api/kpis");
+      const res = await fetch("https://freshbites-supplychain-planner-backend.onrender.com/api/kpis");
       const data = await res.json();
       setKpis(data);
     } catch (err) {

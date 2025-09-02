@@ -12,9 +12,9 @@ export const DataProvider = ({ children }) => {
 
   const fetchAllData = async () => {
     try {
-      const demand = await fetch("http://localhost:8000/api/demand").then(r => r.json());
-      const stock = await fetch("http://localhost:8000/api/stock").then(r => r.json());
-      const suppliers = await fetch("http://localhost:8000/api/suppliers").then(r => r.json());
+      const demand = await fetch("https://freshbites-supplychain-planner-backend.onrender.com/api/demand").then(r => r.json());
+      const stock = await fetch("https://freshbites-supplychain-planner-backend.onrender.com/api/stock").then(r => r.json());
+      const suppliers = await fetch("https://freshbites-supplychain-planner-backend.onrender.com/api/suppliers").then(r => r.json());
 
       setDemandData(demand);
       setInventoryData(stock);

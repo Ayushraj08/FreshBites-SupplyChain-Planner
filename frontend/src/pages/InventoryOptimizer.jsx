@@ -17,11 +17,11 @@ export default function InventoryDashboard() {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const predRes = await fetch("http://localhost:8000/api/inventory_predictor");
+      const predRes = await fetch("https://freshbites-supplychain-planner-backend.onrender.com/api/inventory_predictor");
       const predData = await predRes.json();
       setPredictorData(predData);
 
-      const ssRes = await fetch("http://localhost:8000/api/safety_stock", {
+      const ssRes = await fetch("https://freshbites-supplychain-planner-backend.onrender.com/api/safety_stock", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ service_level: serviceLevel / 100 }),
@@ -29,7 +29,7 @@ export default function InventoryDashboard() {
       const ssData = await ssRes.json();
       setSafetyStock(ssData);
 
-      const rebRes = await fetch("http://localhost:8000/api/rebalance");
+      const rebRes = await fetch("https://freshbites-supplychain-planner-backend.onrender.com/api/rebalance");
       const rebData = await rebRes.json();
       setRebalancing(rebData);
 
@@ -48,7 +48,7 @@ export default function InventoryDashboard() {
     formData.append("file", file);
 
     try {
-      const res = await fetch("http://localhost:8000/api/upload_inventory", {
+      const res = await fetch("https://freshbites-supplychain-planner-backend.onrender.com/api/upload_inventory", {
         method: "POST",
         body: formData,
       });

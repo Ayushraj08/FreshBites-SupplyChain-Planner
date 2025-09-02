@@ -49,7 +49,7 @@ export default function ProductionPlanner() {
       const body = { strategy: selectedStrategy };
       if (uploadedData) body.uploaded_data = uploadedData;
 
-      const response = await fetch("http://localhost:8000/api/production_plan", {
+      const response = await fetch("https://freshbites-supplychain-planner-backend.onrender.com/api/production_plan", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
