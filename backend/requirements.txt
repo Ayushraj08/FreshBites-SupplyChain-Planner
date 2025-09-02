@@ -13,7 +13,8 @@ numpy==1.26.4
 # Optimization & AI
 scikit-learn==1.5.2
 scipy==1.14.1
-ortools==9.10.4067        # for optimization engine (LP/MIP)
+ortools==9.13.4784   # for optimization engine (LP/MIP)
+                   
 
 # Utils
 python-dotenv==1.0.1
