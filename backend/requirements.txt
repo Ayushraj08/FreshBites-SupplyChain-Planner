@@ -20,3 +20,5 @@ ortools==9.13.4784   # for optimization engine (LP/MIP)
 python-dotenv==1.0.1
 
 flask-sqlalchemy==3.1.1
+
+gunicorn==21.2.0
